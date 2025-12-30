@@ -27,8 +27,13 @@ class YurticiShipping extends AbstractShipping
             return false;
         }
 
-        $totalCost = collect(Cart::getCart()->items)
-            ->sum(fn($item) => $this->calculateShippingCost($this->getChargeableWeight($item)) * $item->quantity);
+        /*$totalCost = collect(Cart::getCart()->items)
+            ->sum(fn($item) => $this->calculateShippingCost($this->getChargeableWeight($item)) * $item->quantity);*/
+
+        $totalWeight = collect(Cart::getCart()->items)
+            ->sum(fn($item) => $this->getChargeableWeight($item) * $item->quantity);
+
+        $totalCost = $this->calculateShippingCost($totalWeight);
 
         return $this->createShippingRateObject($totalCost);
     }
