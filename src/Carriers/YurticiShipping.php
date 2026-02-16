@@ -147,14 +147,14 @@ class YurticiShipping extends AbstractShipping
         $exchangeRate = $this->getExchangeRate();
 
         $cost = match (true) {
-            $weight == 0 => 101.5,
-            $weight <= 5 => 135.51,
-            $weight <= 10 => 155.71,
-            $weight <= 15 => 185.95,
-            $weight <= 20 => 255.78,
-            $weight <= 25 => 326.52,
-            $weight <= 30 => 397.57,
-            default => $weight * 13.297,
+            $weight == 0 => 137.03,
+            $weight <= 5 => 182.94,
+            $weight <= 10 => 210.21,
+            $weight <= 15 => 251.03,
+            $weight <= 20 => 345.30,
+            $weight <= 25 => 440.80,
+            $weight <= 30 => 536.72,
+            default => $weight * 17.951,
         };
 
         return $cost / $exchangeRate;
